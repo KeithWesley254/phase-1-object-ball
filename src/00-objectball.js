@@ -1,5 +1,5 @@
 function gameObject(){
-    const teamsY = {
+    return {
           Home:{
               teamName: 'Brooklyn Nets',
               colors: ['Black', 'White'],
@@ -54,6 +54,7 @@ function gameObject(){
                       blocks: 11,
                       slamDunks: 1,
                   },
+          }
           },
           Away:{
               teamName: 'Charlotte Hornets',
@@ -112,7 +113,37 @@ function gameObject(){
               }
           }
       }
-      }
-    return teamsY
   }
   console.log(gameObject());
+
+const scoreBoard = gameObject()
+
+function allPlayers(){
+    const scoreBoard = gameObject()
+    const homeTeam = scoreBoard.Home.players
+    const awayTeam = scoreBoard.Away.players
+
+    return Object.assign({}, homeTeam, awayTeam)
+}
+
+function numPointsScored(insertPlayerName){
+    //Another method to do this to avoid using the for in loop.
+    //object.entries() returns an array of a given object just like for... in loop.
+
+    // const playerArrays = Object.entries(players())
+    // const player = playerArrays.find(playerArray => playerArray[0] === insertPlayerName)
+
+    //playerName at 0 index
+    //playerInfo at 1 index
+    //eg ['Brendan Haywood',(...)]
+    
+    // return player[1].points
+
+    for(const player in allPlayers()){
+        if(player === insertPlayerName){
+            return allPlayers()[player].points
+        }
+    }
+}
+
+console.log(numPointsScored('Brendan Haywood'))
