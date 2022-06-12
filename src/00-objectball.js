@@ -136,7 +136,7 @@ function numPointsScored(insertPlayerName){
     //playerName at 0 index
     //playerInfo at 1 index
     //eg ['Brendan Haywood',(...)]
-    
+
     // return player[1].points
 
     for(const player in allPlayers()){
@@ -147,3 +147,34 @@ function numPointsScored(insertPlayerName){
 }
 
 console.log(numPointsScored('Brendan Haywood'))
+
+//home team
+function homeTeamz(){
+    return gameObject().Home
+}
+//away team
+function awayTeamz(){
+    return gameObject().Away
+}
+//shoe size
+function shoeSize(insertPlayerName){
+    return allPlayers()[insertPlayerName].shoe
+}
+console.log(shoeSize('Brendan Haywood'))
+
+//all teams
+function allTeams(){
+    const scoreBoard = gameObject()
+    const homeTeamz = scoreBoard.Home
+    const awayTeamz = scoreBoard.Away
+
+    return Object.assign({}, homeTeamz, awayTeamz)
+}
+//team names in array
+function teamNames(){
+    const homeName = gameObject().Home.teamName
+    const awayName = gameObject().Away.teamName
+
+    return [homeName, awayName]
+}
+console.log(teamNames())
